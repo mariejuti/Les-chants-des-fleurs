@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Les Chants des Fleurs — Nos créations florales : bouquets de saison, créations personnalisées, mariages et mini compositions." />
+  <title>Nos créations — Les Chants des Fleurs</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo/logo-dessin.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ================================================
+       Page nos-créations — styles spécifiques
+       ================================================ */
+
+    /* En-tête de page */
+    .page-hero {
+      padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-l);
+      text-align: center;
+      background: var(--color-bg);
+    }
+
+    .page-hero__ornement {
+      height: 56px;
+      width: auto;
+      opacity: 0.3;
+      margin: 0 auto var(--spacing-m);
+      display: block;
+    }
+
+    .page-hero__titre {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-m);
+    }
+
+    .page-hero__sous-titre {
+      color: var(--color-text-light);
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    /* Navigation interne entre rubriques */
+    .nav-rubriques {
+      background: white;
+      border-bottom: 1px solid var(--color-accent);
+      position: sticky;
+      top: 85px;
+      z-index: 50;
+    }
+
+    .nav-rubriques__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-l);
+      display: flex;
+      gap: var(--spacing-l);
+      overflow-x: auto;
+    }
+
+    .nav-rubriques__inner a {
+      display: block;
+      padding: var(--spacing-m) 0 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      white-space: nowrap;
+      border-bottom: 6px solid var(--color-accent);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-rubriques__inner a:hover {
+      color: var(--color-secondary);
+      border-bottom-color: var(--color-secondary);
+    }
+
+    /* Sections rubriques */
+    .rubrique {
+      padding: var(--spacing-l) 0 var(--spacing-xl);
+      scroll-margin-top: 150px;
+    }
+
+    .rubrique:nth-child(odd) {
+      background: var(--color-bg);
+    }
+
+    .rubrique:nth-child(even) {
+      background: white;
+    }
+
+    .rubrique__header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto var(--spacing-l);
+    }
+
+    .rubrique__header h2 {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-m);
+    }
+
+    .rubrique__desc {
+      color: var(--color-text-light);
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* Grille de produits — 3 colonnes */
+    .produits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-xl);
+    }
+
+    /* Carte produit */
+    .produit-card {
+      background: white;
+      border: 1px solid var(--color-accent);
+      cursor: pointer;
+      transition: box-shadow 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .produit-card:hover {
+      box-shadow: 0 8px 32px rgba(74, 63, 58, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .produit-card__image {
+      width: 100%;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      background: var(--color-bg);
+      position: relative;
+    }
+
+    .produit-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .produit-card:hover .produit-card__image img {
+      transform: scale(1.05);
+    }
+
+    /* Placeholder photo */
+    .produit-card__placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-m);
+      background: var(--color-bg);
+    }
+
+    .produit-card__placeholder img {
+      height: 48px;
+      width: auto;
+      opacity: 0.2;
+    }
+
+    .produit-card__placeholder span {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      opacity: 0.6;
+    }
+
+    /* Pas de hover sur les placeholders */
+    .produit-card--placeholder {
+      cursor: default;
+    }
+
+    .produit-card--placeholder:hover {
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* Infos produit */
+    .produit-card__infos {
+      padding: var(--spacing-m);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+
+    .produit-card__nom {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .produit-card__tagline {
+      font-size: 0.82rem;
+      color: var(--color-text-light);
+      font-style: italic;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .produit-card__prix {
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      color: var(--color-secondary);
+      margin: auto 0 0;
+      padding-top: var(--spacing-s);
+    }
+
+    /* ================================================
+       Lightbox
+       ================================================ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(74, 63, 58, 0.75);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-l);
+    }
+
+    .lightbox--visible {
+      display: flex;
+    }
+
+    .lightbox__inner {
+      background: white;
+      max-width: 860px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      max-height: 90vh;
+      overflow: hidden;
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: var(--spacing-m);
+      right: var(--spacing-m);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-text-light);
+      cursor: pointer;
+      z-index: 10;
+      line-height: 1;
+      transition: color 0.2s;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .lightbox__close:hover {
+      color: var(--color-primary);
+    }
+
+    .lightbox__image-wrap {
+      overflow: hidden;
+    }
+
+    .lightbox__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .lightbox__details {
+      padding: var(--spacing-xl) var(--spacing-l);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--spacing-m);
+    }
+
+    .lightbox__ornement {
+      height: 48px;
+      width: auto;
+      opacity: 0.25;
+    }
+
+    .lightbox__nom {
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .lightbox__desc {
+      color: var(--color-text-light);
+      font-style: italic;
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .lightbox__prix {
+      font-family: var(--font-title);
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      margin: 0;
+    }
+
+    .lightbox__mention {
+      font-size: 0.78rem;
+      color: var(--color-text-light);
+      font-style: italic;
+      line-height: 1.6;
+      margin: auto 0 0;
+      padding-top: var(--spacing-m);
+      border-top: 1px solid var(--color-accent);
+    }
+
+    /* ================================================
+       Responsive
+       ================================================ */
+    @media (max-width: 900px) {
+      .produits__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .lightbox__inner {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .lightbox__image-wrap {
+        aspect-ratio: 4/3;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .produits__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-m);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/images/logo/logo-header.svg" alt="Les Chants des Fleurs" class="nav__logo-img" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="../index.html#accueil">Accueil</a></li>
+        <li><a href="../pages/boutique.html">La boutique</a></li>
+        <li><a href="../pages/nos-creations.html">Nos créations</a></li>
+        <li><a href="../index.html#ateliers">Ateliers</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- En-tête de page -->
+  <section class="page-hero">
+    <div class="container">
+      <img src="../assets/images/logo/logo-dessin.svg" alt="" class="page-hero__ornement" />
+      <h1 class="page-hero__titre">Nos créations</h1>
+      <p class="page-hero__sous-titre">Des créations florales inspirées par les saisons et pensées pour accompagner les moments qui comptent.</p>
+    </div>
+  </section>
+
+  <!-- Navigation rubriques -->
+  <nav class="nav-rubriques" aria-label="Rubriques">
+    <div class="nav-rubriques__inner">
+      <a href="#bouquets">Bouquets de saison</a>
+      <a href="#personnalisees">Créations personnalisées</a>
+      <a href="#mariages">Mariages & Cérémonies</a>
+      <a href="#mini">Mini compositions</a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       RUBRIQUE 1 — Bouquets de saison
+       ============================================================ -->
+  <section id="bouquets" class="rubrique">
+    <div class="container">
+      <div class="rubrique__header">
+        <h2>Bouquets de saison</h2>
+        <p class="rubrique__desc">Des créations fraîches et inspirées des fleurs du moment.</p>
+      </div>
+
+      <div class="produits__grid">
+
+        <!-- Douceur du matin -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Douceur du matin.jpeg"
+          data-nom="Douceur du matin"
+          data-desc="Un souffle léger pour illuminer le quotidien. Fleurs de saison & feuillage délicat."
+          data-prix="35 €">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Douceur du matin.jpeg" alt="Douceur du matin" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Douceur du matin</h3>
+            <p class="produit-card__tagline">Un souffle léger pour illuminer le quotidien</p>
+            <p class="produit-card__prix">35 €</p>
+          </div>
+        </div>
+
+        <!-- Chant romantique -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Chant romantique.JPG"
+          data-nom="Chant romantique"
+          data-desc="Quand les fleurs murmurent les plus beaux sentiments. Roses & fleurs de saison."
+          data-prix="45 €">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Chant romantique.JPG" alt="Chant romantique" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Chant romantique</h3>
+            <p class="produit-card__tagline">Quand les fleurs murmurent les plus beaux sentiments</p>
+            <p class="produit-card__prix">45 €</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 3 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 4 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 5 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 6 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       RUBRIQUE 2 — Créations personnalisées
+       ============================================================ -->
+  <section id="personnalisees" class="rubrique">
+    <div class="container">
+      <div class="rubrique__header">
+        <h2>Créations personnalisées</h2>
+        <p class="rubrique__desc">Des compositions uniques réalisées selon vos envies, votre budget ou l'occasion.</p>
+      </div>
+
+      <div class="produits__grid">
+
+        <!-- Éclat poétique -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Éclat poétique.JPG"
+          data-nom="Éclat poétique"
+          data-desc="Une composition qui attire le regard et réveille l'émotion. Fleurs variées & textures naturelles."
+          data-prix="55 €">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Éclat poétique.JPG" alt="Éclat poétique" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Éclat poétique</h3>
+            <p class="produit-card__tagline">Une composition qui attire le regard et réveille l'émotion</p>
+            <p class="produit-card__prix">55 €</p>
+          </div>
+        </div>
+
+        <!-- Signature du Chant -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Signature du Chant.jpeg"
+          data-nom="Signature du Chant"
+          data-desc="Une création unique, pensée comme une émotion florale. Composition artistique haut de gamme."
+          data-prix="70 €">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Signature du Chant.jpeg" alt="Signature du Chant" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Signature du Chant</h3>
+            <p class="produit-card__tagline">Une création unique, pensée comme une émotion florale</p>
+            <p class="produit-card__prix">70 €</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 3 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 4 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 5 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 6 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       RUBRIQUE 3 — Mariages & Cérémonies
+       ============================================================ -->
+  <section id="mariages" class="rubrique">
+    <div class="container">
+      <div class="rubrique__header">
+        <h2>Mariages & Cérémonies</h2>
+        <p class="rubrique__desc">Bouquets, décorations florales et créations sur mesure pour les mariages, anniversaires, hommages et autres moments importants de la vie.</p>
+      </div>
+
+      <div class="produits__grid">
+
+        <!-- Mariage 1 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Mariage1.JPG"
+          data-nom="Création mariage"
+          data-desc="Une composition florale pensée pour accompagner vos plus beaux moments."
+          data-prix="Tarif sur devis">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Mariage1.JPG" alt="Création mariage" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Création mariage</h3>
+            <p class="produit-card__tagline">Composition sur mesure</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
+          </div>
+        </div>
+
+        <!-- Mariage 2 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Mariage2.jpg"
+          data-nom="Décoration florale"
+          data-desc="Des arrangements floraux pour sublimer votre lieu de réception."
+          data-prix="Tarif sur devis">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Mariage2.jpg" alt="Décoration florale" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Décoration florale</h3>
+            <p class="produit-card__tagline">Pour sublimer votre réception</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
+          </div>
+        </div>
+
+        <!-- Mariage 3 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Mariage3.JPG"
+          data-nom="Bouquet de mariée"
+          data-desc="Un bouquet pensé pour accompagner l'un des plus beaux jours de votre vie."
+          data-prix="Tarif sur devis">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Mariage3.JPG" alt="Bouquet de mariée" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Bouquet de mariée</h3>
+            <p class="produit-card__tagline">Pour l'un des plus beaux jours de votre vie</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
+          </div>
+        </div>
+
+        <!-- Mariage 4 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Mariage4.jpg"
+          data-nom="Cérémonie & hommage"
+          data-desc="Des créations florales pour accompagner tous les rituels de vie, avec respect et douceur."
+          data-prix="Tarif sur devis">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Mariage4.jpg" alt="Cérémonie et hommage" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Cérémonie & hommage</h3>
+            <p class="produit-card__tagline">Avec respect et douceur, pour chaque rituel de vie</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 5 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 6 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA contact pour devis -->
+      <div style="text-align: center; margin-top: var(--spacing-xl);">
+        <p style="color: var(--color-text-light); font-style: italic; margin-bottom: var(--spacing-l);">Pour un projet de mariage ou de cérémonie, contactez-nous pour un devis personnalisé.</p>
+        <a href="../index.html#contact" class="btn btn--outline">Nous contacter</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       RUBRIQUE 4 — Mini compositions
+       ============================================================ -->
+  <section id="mini" class="rubrique">
+    <div class="container">
+      <div class="rubrique__header">
+        <h2>Mini compositions</h2>
+        <p class="rubrique__desc">Petites attentions florales, plantes et créations à offrir ou à s'offrir.</p>
+      </div>
+
+      <div class="produits__grid">
+
+        <!-- Mini Jardin -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/Mini Jardin.jpg"
+          data-nom="Mini Jardin"
+          data-desc="Une petite touche de nature à emporter partout. Plante ou mini composition, idéal cadeau ou attention."
+          data-prix="À partir de 8 €">
+          <div class="produit-card__image">
+            <img src="../assets/images/produits/Mini Jardin.jpg" alt="Mini Jardin" />
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">Mini Jardin</h3>
+            <p class="produit-card__tagline">Une petite touche de nature à emporter partout</p>
+            <p class="produit-card__prix">À partir de 8 €</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 2 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 3 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 4 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 5 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+        <!-- Placeholder 6 -->
+        <div class="produit-card produit-card--placeholder">
+          <div class="produit-card__image">
+            <div class="produit-card__placeholder">
+              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
+              <span>Photo à venir</span>
+            </div>
+          </div>
+          <div class="produit-card__infos">
+            <h3 class="produit-card__nom">À venir</h3>
+            <p class="produit-card__prix">&nbsp;</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       LIGHTBOX
+       ============================================================ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Détail de la création">
+    <div class="lightbox__inner">
+      <button class="lightbox__close" aria-label="Fermer">&times;</button>
+      <div class="lightbox__image-wrap">
+        <img id="lightbox-img" src="" alt="" />
+      </div>
+      <div class="lightbox__details">
+        <img src="../assets/images/logo/logo-dessin.svg" alt="" class="lightbox__ornement" />
+        <h3 id="lightbox-nom" class="lightbox__nom"></h3>
+        <p id="lightbox-desc" class="lightbox__desc"></p>
+        <p id="lightbox-prix" class="lightbox__prix"></p>
+        <p class="lightbox__mention">Nos bouquets sont réalisés à partir de fleurs fraîches de saison. Les compositions peuvent varier selon les arrivages. Photos non contractuelles.<br><br>D'autres créations sont à découvrir en boutique.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="../assets/images/logo/logo-blanc.svg" alt="Les Chants des Fleurs" class="footer__logo" />
+    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés</p>
+    <p>5 bis rue de Tlemcen, 75020 Paris &nbsp;|&nbsp; <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener">@leschantsdesfleurs</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbNom = document.getElementById('lightbox-nom');
+    const lbDesc = document.getElementById('lightbox-desc');
+    const lbPrix = document.getElementById('lightbox-prix');
+
+    document.querySelectorAll('.produit-card:not(.produit-card--placeholder)').forEach(card => {
+      card.addEventListener('click', () => {
+        lbImg.src = card.dataset.img;
+        lbImg.alt = card.dataset.nom;
+        lbNom.textContent = card.dataset.nom;
+        lbDesc.textContent = card.dataset.desc;
+        lbPrix.textContent = card.dataset.prix;
+        lightbox.classList.add('lightbox--visible');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('lightbox--visible');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>

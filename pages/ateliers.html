@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Les Chants des Fleurs — Nos ateliers floraux à Paris 20e. Initiation florale, langage des fleurs, atelier enfants." />
+  <title>Nos ateliers — Les Chants des Fleurs</title>
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/logo/logo-dessin.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* ================================================
+       Page ateliers — styles spécifiques
+       ================================================ */
+
+    .page-hero {
+      padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
+      text-align: center;
+      background: var(--color-bg);
+    }
+
+    .page-hero__ornement {
+      height: 56px;
+      width: auto;
+      opacity: 0.3;
+      margin: 0 auto var(--spacing-m);
+      display: block;
+    }
+
+    .page-hero__titre {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-m);
+    }
+
+    .page-hero__sous-titre {
+      color: var(--color-text-light);
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* ================================================
+       Blocs ateliers empilés
+       ================================================ */
+    .ateliers-liste {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .atelier-bloc {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+      border-bottom: 1px solid var(--color-accent);
+      scroll-margin-top: 90px;
+    }
+
+    .atelier-bloc:last-child {
+      border-bottom: none;
+    }
+
+    /* Photo à gauche pour les blocs impairs */
+    .atelier-bloc:nth-child(odd) .atelier-bloc__photo {
+      order: 0;
+    }
+    .atelier-bloc:nth-child(odd) .atelier-bloc__contenu {
+      order: 1;
+    }
+
+    /* Photo à droite pour les blocs pairs */
+    .atelier-bloc:nth-child(even) .atelier-bloc__photo {
+      order: 1;
+    }
+    .atelier-bloc:nth-child(even) .atelier-bloc__contenu {
+      order: 0;
+    }
+
+    .atelier-bloc__photo {
+      overflow: hidden;
+    }
+
+    .atelier-bloc__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .atelier-bloc:hover .atelier-bloc__photo img {
+      transform: scale(1.03);
+    }
+
+    .atelier-bloc__contenu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: var(--spacing-xl);
+      background: white;
+    }
+
+    .atelier-bloc:nth-child(even) .atelier-bloc__contenu {
+      background: var(--color-bg);
+    }
+
+    .atelier-bloc__numero {
+      font-family: var(--font-title);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--spacing-m);
+    }
+
+    .atelier-bloc__titre {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-m);
+    }
+
+    .atelier-bloc__texte {
+      color: var(--color-text-light);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-l);
+    }
+
+    .atelier-bloc__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: var(--spacing-l);
+    }
+
+    .atelier-bloc__meta span {
+      font-size: 0.85rem;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .atelier-bloc__meta strong {
+      font-family: var(--font-title);
+      color: var(--color-secondary);
+    }
+
+    /* ================================================
+       Lightbox ateliers
+       ================================================ */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(74, 63, 58, 0.75);
+      backdrop-filter: blur(4px);
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-l);
+    }
+
+    .lightbox--visible {
+      display: flex;
+    }
+
+    .lightbox__inner {
+      background: white;
+      max-width: 860px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      max-height: 90vh;
+      overflow: hidden;
+    }
+
+    .lightbox__close {
+      position: absolute;
+      top: var(--spacing-m);
+      right: var(--spacing-m);
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-text-light);
+      cursor: pointer;
+      z-index: 10;
+      line-height: 1;
+      transition: color 0.2s;
+      padding: 0.25rem 0.5rem;
+    }
+
+    .lightbox__close:hover {
+      color: var(--color-primary);
+    }
+
+    .lightbox__image-wrap {
+      overflow: hidden;
+    }
+
+    .lightbox__image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .lightbox__details {
+      padding: var(--spacing-xl) var(--spacing-l);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-m);
+      overflow-y: auto;
+    }
+
+    .lightbox__ornement {
+      height: 40px;
+      width: auto;
+      opacity: 0.25;
+    }
+
+    .lightbox__nom {
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--color-primary);
+      margin: 0;
+    }
+
+    .lightbox__desc {
+      color: var(--color-text);
+      font-size: 0.95rem;
+      margin: 0;
+      line-height: 1.8;
+    }
+
+    .lightbox__infos {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: var(--spacing-m) 0;
+      border-top: 1px solid var(--color-accent);
+      border-bottom: 1px solid var(--color-accent);
+    }
+
+    .lightbox__infos span {
+      font-size: 0.88rem;
+      color: var(--color-text);
+    }
+
+    .lightbox__infos strong {
+      font-family: var(--font-title);
+      color: var(--color-secondary);
+    }
+
+    .lightbox__mention {
+      font-size: 0.78rem;
+      color: var(--color-text-light);
+      font-style: italic;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ================================================
+       CTA fin de page
+       ================================================ */
+    .section--cta-ateliers {
+      background: var(--color-primary);
+      padding: var(--spacing-xl) 0;
+      text-align: center;
+    }
+
+    .section--cta-ateliers h2 {
+      color: white;
+      margin-bottom: var(--spacing-m);
+    }
+
+    .section--cta-ateliers p {
+      color: rgba(255,255,255,0.75);
+      max-width: 580px;
+      margin: 0 auto var(--spacing-l);
+      line-height: 1.8;
+    }
+
+    .btn--light {
+      background: transparent;
+      color: white;
+      border-color: var(--color-accent);
+    }
+
+    .btn--light:hover {
+      background: var(--color-accent);
+      color: var(--color-primary);
+    }
+
+    /* ================================================
+       Responsive
+       ================================================ */
+    @media (max-width: 768px) {
+      .atelier-bloc {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .atelier-bloc__photo {
+        order: 0 !important;
+        height: 280px;
+      }
+
+      .atelier-bloc__contenu {
+        order: 1 !important;
+        padding: var(--spacing-l);
+      }
+
+      .lightbox__inner {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .lightbox__image-wrap {
+        height: 260px;
+      }
+
+      .lightbox__details {
+        padding: var(--spacing-l);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo">
+        <img src="../assets/images/logo/logo-header.svg" alt="Les Chants des Fleurs" class="nav__logo-img" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="../index.html#accueil">Accueil</a></li>
+        <li><a href="../pages/boutique.html">La boutique</a></li>
+        <li><a href="../pages/nos-creations.html">Nos créations</a></li>
+        <li><a href="../pages/ateliers.html">Ateliers</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <img src="../assets/images/logo/logo-dessin.svg" alt="" class="page-hero__ornement" />
+      <h1 class="page-hero__titre">Nos ateliers</h1>
+      <p class="page-hero__sous-titre">Prenez le temps de créer, d'apprendre et de partager autour des fleurs. Des moments de découverte accessibles à tous, dans une ambiance conviviale et inspirante.</p>
+    </div>
+  </section>
+
+  <!-- Blocs ateliers -->
+  <div class="ateliers-liste">
+
+    <!-- Atelier 1 — Initiation florale -->
+    <article id="initiation" class="atelier-bloc"
+      data-img="../assets/images/produits/Atelier_initiation.png"
+      data-nom="Initiation florale"
+      data-desc="Découvrez les bases de la composition florale lors d'un atelier convivial en petit groupe. Accompagné(e) pas à pas, vous apprendrez à harmoniser les formes, les couleurs et les textures pour créer votre propre bouquet à partir de fleurs fraîches de saison."
+      data-duree="Durée : à préciser"
+      data-tarif="45 € par personne"
+      data-groupe="Groupe limité à 4 participants">
+      <div class="atelier-bloc__photo">
+        <img src="../assets/images/produits/Atelier_initiation.png" alt="Atelier initiation florale" />
+      </div>
+      <div class="atelier-bloc__contenu">
+        <p class="atelier-bloc__numero">Atelier 01</p>
+        <h2 class="atelier-bloc__titre">Initiation florale</h2>
+        <p class="atelier-bloc__texte">Découvrez les gestes essentiels de l'art floral et réalisez votre première création dans une atmosphère chaleureuse et bienveillante.</p>
+        <div class="atelier-bloc__meta">
+          <span><strong>45 €</strong> / personne</span>
+          <span>4 personnes maximum</span>
+        </div>
+        <button class="btn btn--outline atelier-btn-zoom">En savoir plus</button>
+      </div>
+    </article>
+
+    <!-- Atelier 2 — Composer un message -->
+    <article id="message" class="atelier-bloc"
+      data-img="../assets/images/produits/Atelier_message.png"
+      data-nom="Composer un message"
+      data-desc="Chaque fleur possède sa symbolique. Lors de cet atelier, découvrez le langage des fleurs et composez une création unique qui raconte une histoire, transmet une émotion ou accompagne un message particulier."
+      data-duree="Durée : à préciser"
+      data-tarif="45 € par personne"
+      data-groupe="Groupe limité à 4 participants">
+      <div class="atelier-bloc__photo">
+        <img src="../assets/images/produits/Atelier_message.png" alt="Atelier composer un message" />
+      </div>
+      <div class="atelier-bloc__contenu">
+        <p class="atelier-bloc__numero">Atelier 02</p>
+        <h2 class="atelier-bloc__titre">Composer un message</h2>
+        <p class="atelier-bloc__texte">Créez un bouquet inspiré du langage des fleurs et laissez parler votre créativité.</p>
+        <div class="atelier-bloc__meta">
+          <span><strong>45 €</strong> / personne</span>
+          <span>4 personnes maximum</span>
+        </div>
+        <button class="btn btn--outline atelier-btn-zoom">En savoir plus</button>
+      </div>
+    </article>
+
+    <!-- Atelier 3 — Atelier enfants -->
+    <article id="enfants" class="atelier-bloc"
+      data-img="../assets/images/produits/Atelier_enfants.png"
+      data-nom="Atelier enfants"
+      data-desc="Pensé pour les enfants, cet atelier propose une approche simple et amusante de l'univers floral. Observation, manipulation et création permettent aux plus jeunes de développer leur imagination tout en découvrant la nature et les fleurs."
+      data-duree="Durée : à préciser"
+      data-tarif="45 € par personne"
+      data-groupe="Groupe limité à 4 participants">
+      <div class="atelier-bloc__photo">
+        <img src="../assets/images/produits/Atelier_enfants.png" alt="Atelier enfants" />
+      </div>
+      <div class="atelier-bloc__contenu">
+        <p class="atelier-bloc__numero">Atelier 03</p>
+        <h2 class="atelier-bloc__titre">Atelier enfants</h2>
+        <p class="atelier-bloc__texte">Une découverte ludique et créative pour éveiller la curiosité des plus jeunes au monde des fleurs.</p>
+        <div class="atelier-bloc__meta">
+          <span><strong>45 €</strong> / personne</span>
+          <span>4 personnes maximum</span>
+        </div>
+        <button class="btn btn--outline atelier-btn-zoom">En savoir plus</button>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- CTA inscription -->
+  <section class="section--cta-ateliers">
+    <div class="container">
+      <h2>Envie de participer à un atelier ?</h2>
+      <p>Les dates et thématiques évoluent au fil des saisons. Contactez-nous pour connaître les prochaines sessions ou organiser un atelier privé.</p>
+      <a href="../index.html#contact" class="btn btn--light">S'inscrire à un atelier</a>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Détail de l'atelier">
+    <div class="lightbox__inner">
+      <button class="lightbox__close" aria-label="Fermer">&times;</button>
+      <div class="lightbox__image-wrap">
+        <img id="lightbox-img" src="" alt="" />
+      </div>
+      <div class="lightbox__details">
+        <img src="../assets/images/logo/logo-dessin.svg" alt="" class="lightbox__ornement" />
+        <h3 id="lightbox-nom" class="lightbox__nom"></h3>
+        <p id="lightbox-desc" class="lightbox__desc"></p>
+        <div class="lightbox__infos">
+          <span id="lightbox-duree"></span>
+          <span><strong id="lightbox-tarif"></strong></span>
+          <span id="lightbox-groupe"></span>
+        </div>
+        <p class="lightbox__mention">Les fleurs utilisées varient selon les saisons et les arrivages afin de privilégier la fraîcheur et la qualité des créations.</p>
+        <a href="../index.html#contact" class="btn btn--outline" style="align-self: flex-start;">S'inscrire à cet atelier</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="../assets/images/logo/logo-blanc.svg" alt="Les Chants des Fleurs" class="footer__logo" />
+    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés</p>
+    <p>5 bis rue de Tlemcen, 75020 Paris &nbsp;|&nbsp; <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener">@leschantsdesfleurs</a></p>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbNom = document.getElementById('lightbox-nom');
+    const lbDesc = document.getElementById('lightbox-desc');
+    const lbDuree = document.getElementById('lightbox-duree');
+    const lbTarif = document.getElementById('lightbox-tarif');
+    const lbGroupe = document.getElementById('lightbox-groupe');
+
+    document.querySelectorAll('.atelier-btn-zoom').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const bloc = btn.closest('.atelier-bloc');
+        lbImg.src = bloc.dataset.img;
+        lbImg.alt = bloc.dataset.nom;
+        lbNom.textContent = bloc.dataset.nom;
+        lbDesc.textContent = bloc.dataset.desc;
+        lbDuree.textContent = bloc.dataset.duree;
+        lbTarif.textContent = bloc.dataset.tarif;
+        lbGroupe.textContent = bloc.dataset.groupe;
+        lightbox.classList.add('lightbox--visible');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('lightbox--visible');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>
