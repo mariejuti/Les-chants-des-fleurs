@@ -184,7 +184,7 @@ section {
    Hero
    ================================================ */
 .hero {
-  height: 100vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,7 +293,7 @@ section {
 .boutique__ornement {
   height: 64px;
   width: auto;
-  opacity: 0.35;
+  opacity: 1;
   margin-bottom: var(--spacing-m);
   display: block;
 }
@@ -416,7 +416,7 @@ section {
 .creation-thumb__ornement {
   height: 56px;
   width: auto;
-  opacity: 0.65;
+  opacity: 1;
   flex-shrink: 0;
 }
 
