@@ -216,7 +216,7 @@ section {
 
 .hero__subtitle {
   font-size: 1.1rem;
-  color: rgba(255,255,255,0.85);
+  color: white;
   margin-bottom: var(--spacing-l);
 }
 
@@ -595,7 +595,6 @@ section {
 
 .instagram__link svg {
   flex-shrink: 0;
-  opacity: 0.8;
 }
 
 .form__group {
@@ -652,7 +651,6 @@ section {
 
 .footer p {
   margin-bottom: var(--spacing-s);
-  opacity: 0.85;
 }
 
 .footer a {
