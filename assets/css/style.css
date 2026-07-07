@@ -553,8 +553,22 @@ section {
 }
 
 /* ================================================
+   Plan Google Maps
+   ================================================ */
+.section--map {
+  padding: 0;
+}
+
+/* ================================================
    Contact
    ================================================ */
+#contact {
+  padding-top: var(--spacing-l);
+}
+
+#contact .intro h2 {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+}
 .contact__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -655,6 +669,10 @@ section {
     display: none;
   }
 
+  .nav__inner {
+    justify-content: center;
+  }
+
   .boutique__grid {
     grid-template-columns: 1fr;
   }
@@ -668,7 +686,25 @@ section {
   }
 
   .instagram__wall {
-    height: 220px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: auto;
+  }
+
+  .instagram__post {
+    height: 130px;
+  }
+
+  .section--map {
+    padding: 0;
+  }
+
+  #contact {
+    padding-top: var(--spacing-l);
+  }
+
+  #contact .intro h2 {
+    font-size: 1.4rem;
   }
 
   .contact__grid {

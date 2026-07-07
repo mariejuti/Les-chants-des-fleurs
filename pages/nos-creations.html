@@ -15,7 +15,7 @@
 
     /* En-tête de page */
     .page-hero {
-      padding: calc(var(--spacing-xl) * 2 + var(--spacing-l)) 0 var(--spacing-l);
+      padding: calc(var(--spacing-xl) * 2 + var(--spacing-l)) 0 var(--spacing-m);
       text-align: center;
       background: var(--color-bg);
     }
@@ -56,6 +56,57 @@
       display: flex;
       gap: var(--spacing-l);
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .nav-rubriques__inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .page-hero {
+        padding: calc(var(--spacing-m) + 70px) 0 var(--spacing-s);
+      }
+
+      .nav-rubriques {
+        top: 70px;
+      }
+      .nav-rubriques::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 48px;
+        background: linear-gradient(to right, transparent, white 60%);
+        pointer-events: none;
+        z-index: 1;
+      }
+      .nav-scroll-hint {
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        opacity: 0.7;
+        pointer-events: none;
+        z-index: 2;
+        line-height: 1;
+      }
+      .nav-rubriques__inner a {
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+      .rubrique {
+        scroll-margin-top: 115px;
+        padding-top: 0;
+      }
+      .rubrique__header {
+        padding-top: var(--spacing-m);
+      }
     }
 
     .nav-rubriques__inner a {
@@ -389,6 +440,7 @@
       <a href="#mariages">Mariages & Cérémonies</a>
       <a href="#mini">Mini compositions</a>
     </div>
+    <span class="nav-scroll-hint" aria-hidden="true">›</span>
   </nav>
 
 
@@ -452,45 +504,51 @@
           </div>
         </div>
 
-        <!-- Placeholder 4 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- Bouquet de saison 4 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/bouquet saison 4b.jpg"
+          data-nom="bouquet saison 4"
+          data-desc="bouquet saison 4"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/bouquet saison 4.JPG" alt="bouquet saison 4" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">bouquet saison 4</h3>
+            <p class="produit-card__tagline">bouquet saison 4</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
-        <!-- Placeholder 5 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- Bouquet de saison 5 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/bouquet saison 5b.jpg"
+          data-nom="bouquet saison 5"
+          data-desc="bouquet saison 5"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/bouquet saison 5.jpg" alt="bouquet saison 5" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">bouquet saison 5</h3>
+            <p class="produit-card__tagline">bouquet saison 5</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
-        <!-- Placeholder 6 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- Bouquet de saison 6 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/bouquet saison 6b.jpg"
+          data-nom="bouquet saison 6"
+          data-desc="bouquet saison 6"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/bouquet saison 6.JPG" alt="bouquet saison 6" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">bouquet saison 6</h3>
+            <p class="produit-card__tagline">bouquet saison 6</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
@@ -591,17 +649,19 @@
           </div>
         </div>
 
-        <!-- Placeholder 6 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- créa perso café -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/créa perso café2.jpg"
+          data-nom="créa perso café"
+          data-desc="créa perso café"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/créa perso café1.jpg" alt="créa perso café" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">créa perso café</h3>
+            <p class="produit-card__tagline">créa perso café</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
@@ -670,46 +730,51 @@
           </div>
         </div>
 
-        <!-- Cérémonie & hommage — placeholder en attente de photo -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- mariage 4 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/mariage 4b.JPG"
+          data-nom="mariage 4"
+          data-desc="mariage 4"
+          data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/mariage 4.jpg" alt="mariage 4" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">Cérémonie & hommage</h3>
-            <p class="produit-card__tagline">Avec respect et douceur, pour chaque rituel de vie</p>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">mariage 4</h3>
+            <p class="produit-card__tagline">mariage 4</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
           </div>
         </div>
 
-        <!-- Placeholder 5 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- mariage 5 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/mariage 5b.jpg"
+          data-nom="mariage 5"
+          data-desc="mariage 5"
+          data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/mariage 5.JPG" alt="mariage 5" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">mariage 5</h3>
+            <p class="produit-card__tagline">mariage 5</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
           </div>
         </div>
 
-        <!-- Placeholder 6 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- mariage 6 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/mariage 6b.jpg"
+          data-nom="mariage 6"
+          data-desc="mariage 6"
+          data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/mariage 6.JPG" alt="mariage 6" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">mariage 6</h3>
+            <p class="produit-card__tagline">mariage 6</p>
+            <p class="produit-card__prix">Tarif sur devis</p>
           </div>
         </div>
 
@@ -785,59 +850,51 @@
           </div>
         </div>
 
-        <!-- Placeholder 3 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- mini compo 4 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/mini compo 4b.JPG"
+          data-nom="mini compo 4"
+          data-desc="mini compo 4"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/mini compo 4.JPG" alt="mini compo 4" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">mini compo 4</h3>
+            <p class="produit-card__tagline">mini compo 4</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
-        <!-- Placeholder 4 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- mini compo 5 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/mini compo 5.JPG"
+          data-nom="mini compo 5"
+          data-desc="mini compo 5"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/mini compo 5.JPG" alt="mini compo 5" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">mini compo 5</h3>
+            <p class="produit-card__tagline">mini compo 5</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
-        <!-- Placeholder 5 -->
-        <div class="produit-card produit-card--placeholder">
+        <!-- mini compo 6 -->
+        <div class="produit-card"
+          data-img="../assets/images/produits/mini compo 6b.jpg"
+          data-nom="mini compo 6"
+          data-desc="mini compo 6"
+          data-prix="xx €">
           <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
+            <img src="../assets/images/produits/mini compo 6.JPG" alt="mini compo 6" />
           </div>
           <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
-          </div>
-        </div>
-
-        <!-- Placeholder 6 -->
-        <div class="produit-card produit-card--placeholder">
-          <div class="produit-card__image">
-            <div class="produit-card__placeholder">
-              <img src="../assets/images/logo/logo-dessin.svg" alt="" />
-              <span>Photo à venir</span>
-            </div>
-          </div>
-          <div class="produit-card__infos">
-            <h3 class="produit-card__nom">À venir</h3>
-            <p class="produit-card__prix">&nbsp;</p>
+            <h3 class="produit-card__nom">mini compo 6</h3>
+            <p class="produit-card__tagline">mini compo 6</p>
+            <p class="produit-card__prix">xx €</p>
           </div>
         </div>
 
