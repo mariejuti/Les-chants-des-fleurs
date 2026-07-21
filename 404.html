@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page introuvable — Les Chants des Fleurs</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo-dessin.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/favicon-32x32.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .page-404 {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--spacing-xl) var(--spacing-l);
+      padding-top: calc(var(--spacing-xl) * 2);
+    }
+    .page-404__ornement {
+      height: 64px;
+      width: auto;
+      margin-bottom: var(--spacing-l);
+      opacity: 0.5;
+    }
+    .page-404__code {
+      font-family: var(--font-title);
+      font-size: clamp(4rem, 12vw, 8rem);
+      color: var(--color-accent);
+      line-height: 1;
+      margin-bottom: var(--spacing-m);
+    }
+    .page-404__titre {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-m);
+    }
+    .page-404__texte {
+      color: var(--color-text-light);
+      max-width: 480px;
+      margin-bottom: var(--spacing-xl);
+    }
+    .page-404__liens {
+      display: flex;
+      gap: var(--spacing-l);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/images/logo/logo-header.svg" alt="Les Chants des Fleurs" class="nav__logo-img" />
+      </a>
+      <button class="nav__burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="pages/boutique.html">Notre histoire</a></li>
+        <li><a href="pages/nos-creations.html">Nos créations</a></li>
+        <li><a href="pages/ateliers.html">Nos ateliers</a></li>
+        <li><a href="index.html#plan">Nous trouver</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-404">
+    <img src="assets/images/logo/logo-dessin.svg" alt="" class="page-404__ornement" />
+    <p class="page-404__code">404</p>
+    <h1 class="page-404__titre">Cette page s'est égarée…</h1>
+    <p class="page-404__texte">La page que vous cherchez n'existe pas ou a été déplacée. Pas d'inquiétude, les fleurs sont toujours là.</p>
+    <div class="page-404__liens">
+      <a href="index.html" class="btn btn--primary">Retour à l'accueil</a>
+      <a href="pages/nos-creations.html" class="btn btn--outline">Voir nos créations</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <img src="assets/images/logo/logo-blanc.svg" alt="Les Chants des Fleurs" class="footer__logo" />
+    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés &nbsp;|&nbsp; <a href="pages/mentions-legales.html">Mentions légales</a></p>
+    <p>5 bis rue de Tlemcen, 75020 Paris &nbsp;|&nbsp; <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener">@leschantsdesfleurs</a></p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

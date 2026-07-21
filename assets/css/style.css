@@ -3,49 +3,56 @@
    ================================================ */
 @font-face {
   font-family: 'Cinzel';
-  src: url('../fonts/Cinzel-Regular.otf') format('opentype');
+  src: url('../fonts/Cinzel-Regular.woff2') format('woff2'),
+       url('../fonts/Cinzel-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Cinzel';
-  src: url('../fonts/Cinzel-Bold.otf') format('opentype');
+  src: url('../fonts/Cinzel-Bold.woff2') format('woff2'),
+       url('../fonts/Cinzel-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Cinzel';
-  src: url('../fonts/Cinzel-Black.otf') format('opentype');
+  src: url('../fonts/Cinzel-Black.woff2') format('woff2'),
+       url('../fonts/Cinzel-Black.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thasadith';
-  src: url('../fonts/Thasadith-Regular.ttf') format('truetype');
+  src: url('../fonts/Thasadith-Regular.woff2') format('woff2'),
+       url('../fonts/Thasadith-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thasadith';
-  src: url('../fonts/Thasadith-Italic.ttf') format('truetype');
+  src: url('../fonts/Thasadith-Italic.woff2') format('woff2'),
+       url('../fonts/Thasadith-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thasadith';
-  src: url('../fonts/Thasadith-Bold.ttf') format('truetype');
+  src: url('../fonts/Thasadith-Bold.woff2') format('woff2'),
+       url('../fonts/Thasadith-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Thasadith';
-  src: url('../fonts/Thasadith-BoldItalic.ttf') format('truetype');
+  src: url('../fonts/Thasadith-BoldItalic.woff2') format('woff2'),
+       url('../fonts/Thasadith-BoldItalic.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -112,7 +119,7 @@ h1, h2, h3, h4 {
   line-height: 1.2;
 }
 
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
 h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
 h3 { font-size: 1.25rem; }
 
@@ -184,13 +191,18 @@ section {
    Hero
    ================================================ */
 .hero {
-  height: 75vh;
+  height: 65vh;
+  padding: 80px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background-color: var(--color-primary);
-  background-image: url('../images/hero/hero2.png');
+  background-image: url('../images/hero/hero2.webp');
+  background-image: image-set(
+    url('../images/hero/hero2.webp') type('image/webp'),
+    url('../images/hero/hero2.jpg') type('image/jpeg')
+  );
   background-size: cover;
   background-position: center;
   position: relative;
@@ -247,11 +259,12 @@ section {
 
 .btn--outline {
   background: transparent;
-  color: var(--color-secondary);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .btn--outline:hover {
-  background: var(--color-secondary);
+  background: var(--color-primary);
   color: white;
 }
 
@@ -491,8 +504,17 @@ section {
 .atelier-card p {
   color: var(--color-text);
   font-size: 0.9rem;
-  padding: 0 var(--spacing-l) var(--spacing-l);
+  padding: 0 var(--spacing-l) var(--spacing-m);
   margin: 0;
+}
+
+.atelier-card__cta {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  padding: 0 var(--spacing-l) var(--spacing-l);
 }
 
 /* ================================================
@@ -609,6 +631,7 @@ section {
   margin-bottom: var(--spacing-s);
 }
 
+.form__group select,
 .form__group input,
 .form__group textarea {
   width: 100%;
@@ -622,6 +645,16 @@ section {
   transition: border-color 0.2s;
 }
 
+.form__group select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234A3F3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+.form__group select:focus,
 .form__group input:focus,
 .form__group textarea:focus {
   border-color: var(--color-primary);
@@ -639,14 +672,14 @@ section {
   background: var(--color-primary);
   color: white;
   text-align: center;
-  padding: var(--spacing-xl) var(--spacing-l) var(--spacing-l);
+  padding: var(--spacing-l) var(--spacing-l);
   font-size: 0.85rem;
 }
 
 .footer__logo {
-  height: 150px;
+  height: 100px;
   width: auto;
-  margin: 0 auto var(--spacing-l);
+  margin: 0 auto var(--spacing-m);
 }
 
 .footer p {
@@ -662,13 +695,113 @@ section {
 /* ================================================
    Responsive
    ================================================ */
+/* Infos pratiques 2 colonnes (home + ateliers) */
+.infos-pratiques__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.infos-pratiques__grid h3 {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-m);
+}
+
 @media (max-width: 768px) {
+  .infos-pratiques__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-l);
+    text-align: center;
+  }
+}
+
+/* Signature en police de corps (non Cinzel) */
+.boutique__signature--body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Infos pratiques centrées (home, sans formulaire) */
+.contact__info--centered {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ================================================
+   Burger menu
+   ================================================ */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.nav__burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-primary);
+  transition: all 0.3s ease;
+}
+
+.nav__burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav__burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav__burger {
+    display: flex;
+  }
+
+  .nav.menu-open {
+    height: 100vh;
+    background: #F5F1EA;
+    backdrop-filter: none;
+    display: flex;
+    flex-direction: column;
+  }
+
   .nav__links {
     display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: var(--spacing-xl);
+    list-style: none;
+  }
+
+  .nav__links.open {
+    display: flex;
+  }
+
+  .nav__links a {
+    font-size: 1.2rem;
+    color: var(--color-primary);
   }
 
   .nav__inner {
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .boutique__grid {
@@ -693,6 +826,17 @@ section {
     height: 130px;
   }
 
+  .hero {
+    height: 55vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero__content {
+    text-align: center;
+    width: 100%;
+  }
+
   .section--map {
     padding: 0;
   }
@@ -708,4 +852,62 @@ section {
   .contact__grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ================================================
+   FAQ Accordéon
+   ================================================ */
+.section--faq {
+  background: white;
+}
+
+.faq__liste {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+details.faq__item {
+  border-bottom: 1px solid var(--color-accent);
+}
+
+details.faq__item:first-child {
+  border-top: 1px solid var(--color-accent);
+}
+
+details.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: var(--spacing-l) 0;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  color: var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-l);
+}
+
+details.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+details.faq__item summary::after {
+  content: '+';
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+details.faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq__reponse {
+  padding-bottom: var(--spacing-l);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin: 0;
 }

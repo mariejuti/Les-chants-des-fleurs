@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Les Chants des Fleurs — L'histoire de Magalita et de sa boutique florale dans le 20e arrondissement de Paris." />
-  <title>La boutique — Les Chants des Fleurs</title>
+  <meta name="description" content="L'histoire de Magalita Bonhomme Nguyen, fleuriste artisanale au Père-Lachaise. Une boutique indépendante dédiée aux fleurs fraîches de saison dans le 20e arrondissement de Paris." />
+  <title>Notre histoire — Les Chants des Fleurs, fleuriste Paris 20e</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Les Chants des Fleurs" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Notre histoire — Les Chants des Fleurs, fleuriste Paris 20e" />
+  <meta property="og:description" content="L'histoire de Magalita Bonhomme Nguyen, fleuriste artisanale au Père-Lachaise. Une boutique indépendante dédiée aux fleurs fraîches de saison." />
+  <meta property="og:url" content="https://leschantsdesfleurs.fr/pages/boutique.html" />
+  <meta property="og:image" content="https://leschantsdesfleurs.fr/assets/images/produits/fondatrice.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="../assets/images/logo/logo-dessin.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
     /* ================================================
@@ -14,7 +24,6 @@
        ================================================ */
     .page-hero {
       padding: calc(var(--spacing-xl) * 2 + var(--spacing-l)) 0 var(--spacing-m);
-      min-height: 280px;
       text-align: center;
       background: var(--color-bg);
     }
@@ -68,6 +77,15 @@
       font-size: 1.1rem;
       color: var(--color-secondary);
       margin-top: var(--spacing-l);
+      font-style: italic;
+    }
+
+    .lettre__signature--body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--color-text);
       font-style: italic;
     }
 
@@ -140,6 +158,10 @@
        Responsive
        ================================================ */
     @media (max-width: 768px) {
+      .page-hero {
+        padding: calc(var(--spacing-l) + 70px) 0 var(--spacing-s);
+      }
+
       .lettre__grid {
         grid-template-columns: 1fr;
       }
@@ -150,8 +172,8 @@
       }
 
       .lettre__portrait img {
-        aspect-ratio: 3/2;
-        object-position: top;
+        aspect-ratio: 4/3;
+        object-position: 50% 15%;
       }
 
       .galerie__grid {
@@ -174,12 +196,15 @@
       <a href="../index.html" class="nav__logo">
         <img src="../assets/images/logo/logo-header.svg" alt="Les Chants des Fleurs" class="nav__logo-img" />
       </a>
+      <button class="nav__burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav__links">
-        <li><a href="../index.html#accueil">Accueil</a></li>
-        <li><a href="../index.html#boutique">La boutique</a></li>
-        <li><a href="../index.html#creations">Nos créations</a></li>
-        <li><a href="../index.html#ateliers">Ateliers</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../pages/boutique.html">Notre histoire</a></li>
+        <li><a href="../pages/nos-creations.html">Nos créations</a></li>
+        <li><a href="../pages/ateliers.html">Nos ateliers</a></li>
+        <li><a href="../index.html#plan">Nous trouver</a></li>
       </ul>
     </div>
   </nav>
@@ -187,8 +212,8 @@
   <!-- En-tête de page -->
   <section class="page-hero">
     <div class="container">
-      <h1 class="page-hero__titre">La boutique</h1>
-      <p class="page-hero__sous-titre">Une histoire de fleurs, de quartier et de partage. Des créations florales de saison pensées avec soin<br>pour embellir chaque instant du quotidien.</p>
+      <h1 class="page-hero__titre">Notre histoire</h1>
+      <p class="page-hero__sous-titre">Une histoire de fleurs, de quartier et de partage.</p>
     </div>
   </section>
 
@@ -198,16 +223,16 @@
       <div class="lettre__grid">
 
         <div class="lettre__texte">
-          <p>Les Chants des Fleurs sont nés d'une envie simple : créer dans le 20e arrondissement un lieu où les fleurs occupent une place particulière, celle des émotions, des souvenirs et des moments de vie.</p>
-          <p>Habitante du quartier depuis de nombreuses années, j'ai toujours rêvé d'y ouvrir une boutique indépendante, proche de ses habitants et fidèle aux valeurs qui me tiennent à cœur : la qualité, l'authenticité et le sens du partage.</p>
-          <p>Les fleurs m'accompagnent depuis toujours. J'aime leur beauté, leur diversité et leur capacité à transmettre un message sans avoir besoin de mots. C'est cette passion qui guide chacune de mes créations, réalisées à partir de fleurs fraîches soigneusement sélectionnées au fil des saisons.</p>
-          <p>À travers Les Chants des Fleurs, j'ai souhaité créer un lieu chaleureux où chacun peut trouver le bouquet qui accompagnera une naissance, un anniversaire, une déclaration, un hommage ou simplement l'envie de faire plaisir.</p>
-          <p>Le nom de la boutique reflète aussi ce qui m'anime : l'idée que chaque fleur raconte une histoire et que chaque composition porte en elle une émotion unique. Entre fleurs fraîches et inspiration poétique, mon souhait est d'apporter un peu de beauté et de douceur dans le quotidien de chacun.</p>
-          <p class="lettre__signature">Magalita<span>Fondatrice</span></p>
+          <p>Les Chants des Fleurs sont nés d'une envie simple : créer, au cœur du 20ᵉ arrondissement de Paris, une boutique où les fleurs accompagnent les petits et les grands moments de la vie.</p>
+          <p>Habitante du quartier depuis de nombreuses années, j'ai imaginé un lieu chaleureux, proche de ses habitants, où chaque bouquet est réalisé avec des fleurs fraîches de saison, sélectionnées avec soin.</p>
+          <p>Passionnée par le végétal et l'art floral, je compose des créations inspirées par les saisons, pensées pour célébrer une naissance, un anniversaire, un mariage, rendre hommage ou simplement faire plaisir.</p>
+          <p>Les Chants des Fleurs, c'est avant tout une boutique indépendante où chaque composition est réalisée avec authenticité, sensibilité et savoir-faire.</p>
+          <p class="lettre__signature lettre__signature--body">Magalita<span>Fondatrice</span></p>
+          <a href="../pages/nos-creations.html" class="btn btn--outline" style="margin-top: var(--spacing-l); display: inline-block;">Voir nos créations</a>
         </div>
 
         <div class="lettre__portrait">
-          <img src="../assets/images/produits/fondatrice.jpg" alt="Magalita Bonhomme Nguyen, fondatrice des Chants des Fleurs" />
+          <img loading="lazy" src="../assets/images/produits/fondatrice.jpg" alt="Magalita Bonhomme Nguyen, fondatrice des Chants des Fleurs" />
         </div>
 
       </div>
@@ -219,30 +244,59 @@
     <div class="container">
       <div class="galerie__grid">
         <div class="galerie__item">
-          <img src="../assets/images/produits/Bouquet page la boutique.jpg" alt="Créations florales Les Chants des Fleurs" />
+          <img loading="lazy" src="../assets/images/produits/Bouquet page la boutique.jpg" alt="Créations florales Les Chants des Fleurs" />
         </div>
         <div class="galerie__item">
-          <img src="../assets/images/produits/Portrait mag1.JPG" alt="Magalita Bonhomme Nguyen" />
+          <img loading="lazy" src="../assets/images/produits/Portrait mag1.JPG" alt="Magalita Bonhomme Nguyen" />
         </div>
         <div class="galerie__item">
-          <img src="../assets/images/produits/petales.jpg" alt="Pétales" />
+          <img loading="lazy" src="../assets/images/produits/petales.jpg" alt="Pétales" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Retour -->
-  <section class="section--retour">
+  <!-- Informations pratiques -->
+  <section style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--color-accent);">
     <div class="container">
-      <p>Venez nous rendre visite et découvrir nos créations.</p>
-      <a href="../index.html#creations" class="btn btn--outline">Voir nos créations</a>
+      <div class="infos-pratiques__grid">
+        <div>
+          <h3>Où nous trouver</h3>
+          <p>
+            5 bis rue de Tlemcen<br />
+            75020 Paris<br />
+            Métro : Père Lachaise ou Ménilmontant
+          </p>
+          <p>
+            Tél : 06 XX XX XX XX<br />
+            Email : contact@leschantsdesfleurs.fr
+          </p>
+          <p>
+            <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener" class="instagram__link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>leschantsdesfleurs
+            </a>
+          </p>
+        </div>
+        <div>
+          <h3>Horaires</h3>
+          <p>
+            Lundi : fermé<br />
+            Mardi au samedi : 10h - 20h<br />
+            Dimanche : 10h - 13h
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <img src="../assets/images/logo/logo-blanc.svg" alt="Les Chants des Fleurs" class="footer__logo" />
-    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés</p>
+    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés &nbsp;|&nbsp; <a href="../pages/mentions-legales.html">Mentions légales</a></p>
     <p>5 bis rue de Tlemcen, 75020 Paris &nbsp;|&nbsp; <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener">@leschantsdesfleurs</a></p>
   </footer>
 

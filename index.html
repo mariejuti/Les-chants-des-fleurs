@@ -3,11 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Les Chants des Fleurs - Fleuriste artisanale à Paris 20e. Créations florales personnalisées, ateliers, mariages et événements." />
-  <title>Les Chants des Fleurs</title>
+  <meta name="description" content="Fleuriste artisanale au Père-Lachaise, Paris 20e. Bouquets et compositions de fleurs fraîches de saison, créations personnalisées, ateliers floraux." />
+  <title>Les Chants des Fleurs — Fleuriste artisanale Paris 20e, Père-Lachaise</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Les Chants des Fleurs" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Les Chants des Fleurs — Fleuriste artisanale Paris 20e" />
+  <meta property="og:description" content="Fleuriste artisanale au Père-Lachaise, Paris 20e. Bouquets et compositions de fleurs fraîches de saison, créations personnalisées, ateliers floraux." />
+  <meta property="og:url" content="https://leschantsdesfleurs.fr/" />
+  <meta property="og:image" content="https://leschantsdesfleurs.fr/assets/images/hero/hero2.jpg" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Les Chants des Fleurs",
+    "description": "Fleuriste artisanale au Père-Lachaise, Paris 20e. Bouquets et compositions florales de saison, créations personnalisées, ateliers floraux.",
+    "url": "https://leschantsdesfleurs.fr",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "5 bis rue de Tlemcen",
+      "addressLocality": "Paris",
+      "postalCode": "75020",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.8665,
+      "longitude": 2.3873
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Sunday"],
+        "opens": "10:00",
+        "closes": "13:00"
+      }
+    ],
+    "priceRange": "€€",
+    "image": "https://leschantsdesfleurs.fr/assets/images/hero/hero2.jpg",
+    "sameAs": ["https://www.instagram.com/leschantsdesfleurs"]
+  }
+  </script>
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/logo/logo-dessin.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo/favicon-32x32.png" />
 
   <!-- Polices chargées en local via assets/css/style.css -->
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -20,12 +70,15 @@
       <a href="index.html" class="nav__logo">
         <img src="assets/images/logo/logo-header.svg" alt="Les Chants des Fleurs" class="nav__logo-img" />
       </a>
+      <button class="nav__burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav__links">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#boutique">La boutique</a></li>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="pages/boutique.html">Notre histoire</a></li>
         <li><a href="pages/nos-creations.html">Nos créations</a></li>
-        <li><a href="pages/ateliers.html">Ateliers</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="pages/ateliers.html">Nos ateliers</a></li>
+        <li><a href="#plan">Nous trouver</a></li>
       </ul>
     </div>
   </nav>
@@ -33,9 +86,9 @@
   <!-- Hero -->
   <section id="accueil" class="hero">
     <div class="hero__content">
-      <h1 class="hero__title">Quand la fleur devient message.</h1>
-      <p class="hero__subtitle">Des créations florales artisanales pensées pour transmettre une émotion,<br>accompagner un moment de vie et créer du lien.</p>
-      <a href="#creations" class="btn btn--primary">Découvrir nos créations</a>
+      <h1 class="hero__title">Votre artisan fleuriste<br>au Père-Lachaise</h1>
+      <p class="hero__subtitle">Bouquets et compositions florales réalisés avec des fleurs fraîches de saison. Venez découvrir nos créations en boutique.</p>
+      <a href="#plan" class="btn btn--primary">Venir en boutique</a>
     </div>
   </section>
 
@@ -47,11 +100,11 @@
           <img src="assets/images/logo/logo-dessin.svg" alt="" class="boutique__ornement" />
           <h2>Derrière chaque bouquet…</h2>
           <p>J'ai imaginé Les Chants des Fleurs comme une maison florale sensible et chaleureuse, où chaque création devient une émotion à offrir. Passionnée par le végétal, les saisons et l'artisanat, je compose des bouquets pensés comme des messages, entre poésie, nature et moments de vie.</p>
-          <p class="boutique__signature">Magalita<br /><span>Fondatrice</span></p>
-          <a href="pages/boutique.html" class="btn btn--outline">En savoir plus</a>
+          <p class="boutique__signature boutique__signature--body">Magalita<br /><span>Fondatrice</span></p>
+          <a href="pages/boutique.html" class="btn btn--outline">Découvrir notre histoire</a>
         </div>
         <div class="boutique__photo">
-          <img src="assets/images/produits/fondatrice2.jpg" alt="Magalita Bonhomme Nguyen, fondatrice des Chants des Fleurs" />
+          <img loading="lazy" src="assets/images/produits/fondatrice2.jpg" alt="Magalita Bonhomme Nguyen, fondatrice des Chants des Fleurs" />
         </div>
       </div>
     </div>
@@ -68,49 +121,49 @@
       <div class="creations__grid">
         <a href="pages/nos-creations.html#bouquets" class="creation-thumb">
           <figure class="creation-thumb__figure">
-            <img src="assets/images/produits/Bouquet_LCDF_1ok.jpg" alt="Bouquets de saison" />
+            <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_1ok.jpg" alt="Bouquets de saison" />
           </figure>
           <div class="creation-thumb__label">
             <img src="assets/images/logo/logo-dessin.svg" alt="" class="creation-thumb__ornement" />
             <div class="creation-thumb__text">
               <h3>Bouquets de saison</h3>
-              <p class="creation-thumb__desc">Des créations fraîches et inspirées des fleurs du moment.</p>
+              <p class="creation-thumb__desc">Des bouquets réalisés avec des fleurs fraîches de saison.</p>
             </div>
           </div>
         </a>
         <a href="pages/nos-creations.html#personnalisees" class="creation-thumb">
           <figure class="creation-thumb__figure">
-            <img src="assets/images/produits/Bouquet_LCDF_2ok.jpg" alt="Créations personnalisées" />
+            <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_2ok.jpg" alt="Créations personnalisées" />
           </figure>
           <div class="creation-thumb__label">
             <img src="assets/images/logo/logo-dessin.svg" alt="" class="creation-thumb__ornement" />
             <div class="creation-thumb__text">
               <h3>Créations personnalisées</h3>
-              <p class="creation-thumb__desc">Des compositions uniques réalisées selon vos envies, votre budget ou l'occasion.</p>
+              <p class="creation-thumb__desc">Des compositions imaginées selon vos envies.</p>
             </div>
           </div>
         </a>
         <a href="pages/nos-creations.html#mariages" class="creation-thumb">
           <figure class="creation-thumb__figure">
-            <img src="assets/images/produits/Bouquet_LCDF_3ok.jpg" alt="Mariages & Cérémonies" />
+            <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_3ok.jpg" alt="Mariages & Cérémonies" />
           </figure>
           <div class="creation-thumb__label">
             <img src="assets/images/logo/logo-dessin.svg" alt="" class="creation-thumb__ornement" />
             <div class="creation-thumb__text">
               <h3>Mariages & Cérémonies</h3>
-              <p class="creation-thumb__desc">Bouquets, décorations florales et créations sur mesure pour les mariages, anniversaires, hommages et autres moments importants de la vie.</p>
+              <p class="creation-thumb__desc">Un accompagnement floral pour chaque moment de vie.</p>
             </div>
           </div>
         </a>
         <a href="pages/nos-creations.html#mini" class="creation-thumb">
           <figure class="creation-thumb__figure">
-            <img src="assets/images/produits/Bouquet_LCDF_4ok.jpg" alt="Mini compositions" />
+            <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_4ok.jpg" alt="Mini compositions" />
           </figure>
           <div class="creation-thumb__label">
             <img src="assets/images/logo/logo-dessin.svg" alt="" class="creation-thumb__ornement" />
             <div class="creation-thumb__text">
               <h3>Mini compositions</h3>
-              <p class="creation-thumb__desc">Petites attentions florales, plantes et créations à offrir ou à s'offrir.</p>
+              <p class="creation-thumb__desc">De délicates attentions à offrir ou à s'offrir.</p>
             </div>
           </div>
         </a>
@@ -128,24 +181,27 @@
       <div class="grid grid--3">
         <a href="pages/ateliers.html#initiation" class="atelier-card">
           <div class="atelier-card__image atelier-card__image--large">
-            <img src="assets/images/produits/Atelier_initiation.jpg" alt="Initiation florale" />
+            <img loading="lazy" src="assets/images/produits/Atelier_initiation.jpg" alt="Initiation florale" />
           </div>
           <h3>Initiation florale</h3>
-          <p>Découvrez les bases de la composition florale dans une atmosphère douce et bienveillante.</p>
+          <p>Découvrez les gestes essentiels de l'art floral et réalisez votre première création.</p>
+          <span class="atelier-card__cta">Découvrir →</span>
         </a>
-        <a href="pages/ateliers.html#message" class="atelier-card">
+        <a href="pages/ateliers.html#bouquet" class="atelier-card">
           <div class="atelier-card__image atelier-card__image--serree">
-            <img src="assets/images/produits/Atelier_message.jpg" alt="Composer un message" />
+            <img loading="lazy" src="assets/images/produits/Atelier_message.jpg" alt="Créer un bouquet de saison" />
           </div>
-          <h3>Composer un message</h3>
-          <p>Composez votre bouquet<br>inspiré du langage des fleurs.</p>
+          <h3>Créer un bouquet de saison</h3>
+          <p>Apprenez à composer un bouquet harmonieux au rythme des saisons.</p>
+          <span class="atelier-card__cta">Découvrir →</span>
         </a>
         <a href="pages/ateliers.html#enfants" class="atelier-card">
           <div class="atelier-card__image atelier-card__image--decentree">
-            <img src="assets/images/produits/Atelier_enfants.jpg" alt="Atelier enfants" />
+            <img loading="lazy" src="assets/images/produits/Atelier_enfants.jpg" alt="Mon premier atelier floral" />
           </div>
-          <h3>Atelier enfants</h3>
-          <p>Un moment poétique et ludique pour que les plus jeunes découvrent la nature et les fleurs.</p>
+          <h3>Mon premier atelier floral</h3>
+          <p>Un moment ludique et créatif pour éveiller les plus jeunes au monde des fleurs.</p>
+          <span class="atelier-card__cta">Découvrir →</span>
         </a>
       </div>
     </div>
@@ -159,30 +215,30 @@
     </div>
     <div class="instagram__wall">
       <div class="instagram__post">
-        <img src="assets/images/produits/Bouquet_LCDF_1ok.jpg" alt="" />
+        <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_1ok.jpg" alt="" />
       </div>
       <div class="instagram__post">
-        <img src="assets/images/produits/Bouquet_LCDF_2ok.jpg" alt="" />
+        <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_2ok.jpg" alt="" />
       </div>
       <div class="instagram__post">
-        <img src="assets/images/produits/Bouquet_LCDF_3ok.jpg" alt="" />
+        <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_3ok.jpg" alt="" />
       </div>
       <div class="instagram__post">
-        <img src="assets/images/produits/Bouquet_LCDF_4ok.jpg" alt="" />
+        <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_4ok.jpg" alt="" />
       </div>
       <div class="instagram__post">
-        <img src="assets/images/produits/Bouquet_LCDF_5ok.jpg" alt="" />
+        <img loading="lazy" src="assets/images/produits/Bouquet_LCDF_5ok.jpg" alt="" />
       </div>
       <div class="instagram__post">
-        <img src="assets/images/produits/Douceur du matin.jpg" alt="" />
+        <img loading="lazy" src="assets/images/produits/Douceur du matin.jpg" alt="" />
       </div>
     </div>
   </section>
 
   <!-- Plan -->
-  <section class="section--map">
+  <section id="plan" class="section--map">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1800!2d2.3958!3d48.8648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e3c3c3c3c3c%3A0x0!2s5+bis+Rue+de+Tlemcen%2C+75020+Paris!5e0!3m2!1sfr!2sfr!4v1"
+      src="https://maps.google.com/maps?q=5+bis+rue+de+Tlemcen,75020+Paris,France&t=&z=17&ie=UTF8&iwloc=&hl=fr&output=embed"
       width="100%"
       height="260"
       style="border:0; display:block;"
@@ -193,17 +249,15 @@
     </iframe>
   </section>
 
-  <!-- Contact -->
+  <!-- Informations pratiques -->
   <section id="contact">
     <div class="container">
-      <div class="intro" style="margin-bottom: 3rem;">
-        <h2>Écrivez-nous</h2>
-        <p>Une question, un message à nous transmettre ?</p>
+      <div class="intro" style="margin-bottom: 2rem;">
+        <h2>Informations pratiques</h2>
       </div>
-
       <div class="contact__grid">
         <div class="contact__info">
-          <h3>Informations pratiques</h3>
+          <h3>Où nous trouver</h3>
           <p>
             5 bis rue de Tlemcen<br />
             75020 Paris<br />
@@ -213,8 +267,8 @@
             Tél : 06 XX XX XX XX<br />
             Email : contact@leschantsdesfleurs.fr
           </p>
+          <h3 style="margin-top: var(--spacing-l);">Horaires</h3>
           <p>
-            <strong>Horaires</strong><br />
             Lundi : fermé<br />
             Mardi au samedi : 10h - 20h<br />
             Dimanche : 10h - 13h
@@ -230,21 +284,40 @@
           </p>
         </div>
 
-        <form class="contact-form">
-          <div class="form__group">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" required />
-          </div>
-          <div class="form__group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form__group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn--primary">Envoyer</button>
-        </form>
+        <div>
+          <h3>Écrivez-nous</h3>
+          <p style="margin-bottom: var(--spacing-l); color: var(--color-text-light);">Une question, un message ? Nous vous répondrons rapidement.</p>
+          <form class="contact-form" name="contact" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden><input name="bot-field" /></p>
+            <div class="form__group">
+              <label for="demande-home">Votre demande <span aria-hidden="true">*</span></label>
+              <select id="demande-home" name="demande" required>
+                <option value="" disabled selected>Je souhaite…</option>
+                <option value="renseignement">Obtenir un renseignement</option>
+                <option value="bouquet">Poser une question sur un bouquet</option>
+                <option value="ateliers">En savoir plus sur les ateliers</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label for="nom-home">Nom</label>
+              <input type="text" id="nom-home" name="nom" required />
+            </div>
+            <div class="form__group">
+              <label for="email-home">Email</label>
+              <input type="email" id="email-home" name="email" required />
+            </div>
+            <div class="form__group">
+              <label for="message-home">Message</label>
+              <textarea id="message-home" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary">Envoyer</button>
+            <div id="contact-success" style="display:none; padding: var(--spacing-m) var(--spacing-l); background: #EAF0EA; border-left: 3px solid var(--color-secondary); margin-top: var(--spacing-m); color: var(--color-text);">
+              Merci pour votre message ! Nous vous répondrons rapidement.
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -252,10 +325,18 @@
   <!-- Footer -->
   <footer class="footer">
     <img src="assets/images/logo/logo-blanc.svg" alt="Les Chants des Fleurs" class="footer__logo" />
-    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés</p>
+    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés &nbsp;|&nbsp; <a href="pages/mentions-legales.html">Mentions légales</a></p>
     <p>5 bis rue de Tlemcen, 75020 Paris &nbsp;|&nbsp; <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener">@leschantsdesfleurs</a></p>
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const demande = params.get('demande');
+    if (demande) {
+      const select = document.getElementById('demande-home');
+      if (select) select.value = demande;
+    }
+  </script>
 </body>
 </html>

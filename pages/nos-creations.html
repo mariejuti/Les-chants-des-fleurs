@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Les Chants des Fleurs — Nos créations florales : bouquets de saison, créations personnalisées, mariages et mini compositions." />
-  <title>Nos créations — Les Chants des Fleurs</title>
+  <meta name="description" content="Bouquets de saison, créations personnalisées, compositions pour mariages et cérémonies. Fleuriste artisanale au Père-Lachaise, Paris 20e." />
+  <title>Nos créations florales — Bouquets & compositions | Les Chants des Fleurs</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Les Chants des Fleurs" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:title" content="Nos créations florales — Les Chants des Fleurs, Paris 20e" />
+  <meta property="og:description" content="Bouquets de saison, créations personnalisées, compositions pour mariages et cérémonies. Fleuriste artisanale au Père-Lachaise, Paris 20e." />
+  <meta property="og:url" content="https://leschantsdesfleurs.fr/pages/nos-creations.html" />
+  <meta property="og:image" content="https://leschantsdesfleurs.fr/assets/images/hero/hero2.jpg" />
 
   <link rel="icon" type="image/svg+xml" href="../assets/images/logo/logo-dessin.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/logo/favicon-32x32.png" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
     /* ================================================
@@ -66,7 +76,7 @@
 
     @media (max-width: 768px) {
       .page-hero {
-        padding: calc(var(--spacing-m) + 70px) 0 var(--spacing-s);
+        padding: calc(var(--spacing-l) + 70px) 0 var(--spacing-s);
       }
 
       .nav-rubriques {
@@ -304,18 +314,25 @@
       position: absolute;
       top: var(--spacing-m);
       right: var(--spacing-m);
-      background: none;
+      background: rgba(255, 255, 255, 0.88);
       border: none;
-      font-size: 1.5rem;
-      color: var(--color-text-light);
+      border-radius: 50%;
+      font-size: 1.3rem;
+      color: var(--color-primary);
       cursor: pointer;
       z-index: 10;
       line-height: 1;
-      transition: color 0.2s;
-      padding: 0.25rem 0.5rem;
+      transition: background 0.2s, color 0.2s;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
     }
 
     .lightbox__close:hover {
+      background: rgba(255, 255, 255, 1);
       color: var(--color-primary);
     }
 
@@ -393,8 +410,16 @@
       }
 
       .lightbox__image-wrap {
-        aspect-ratio: 4/3;
-        height: auto;
+        height: 280px;
+        aspect-ratio: unset;
+      }
+
+      .lightbox__image-wrap img {
+        object-position: center 30%;
+      }
+
+      .lightbox__details {
+        padding: var(--spacing-xl) var(--spacing-l);
       }
     }
 
@@ -414,12 +439,15 @@
       <a href="../index.html" class="nav__logo">
         <img src="../assets/images/logo/logo-header.svg" alt="Les Chants des Fleurs" class="nav__logo-img" />
       </a>
+      <button class="nav__burger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav__links">
-        <li><a href="../index.html#accueil">Accueil</a></li>
-        <li><a href="../pages/boutique.html">La boutique</a></li>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../pages/boutique.html">Notre histoire</a></li>
         <li><a href="../pages/nos-creations.html">Nos créations</a></li>
-        <li><a href="../index.html#ateliers">Ateliers</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
+        <li><a href="../pages/ateliers.html">Nos ateliers</a></li>
+        <li><a href="../index.html#plan">Nous trouver</a></li>
       </ul>
     </div>
   </nav>
@@ -451,7 +479,7 @@
     <div class="container">
       <div class="rubrique__header">
         <h2>Bouquets de saison</h2>
-        <p class="rubrique__desc">Des créations fraîches et inspirées des fleurs du moment.</p>
+        <p class="rubrique__desc">Des bouquets réalisés avec des fleurs fraîches de saison.</p>
       </div>
 
       <div class="produits__grid">
@@ -463,7 +491,7 @@
           data-desc="Un souffle léger pour illuminer le quotidien. Fleurs de saison & feuillage délicat."
           data-prix="35 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Douceur du matin.jpg" alt="Douceur du matin" />
+            <img loading="lazy" src="../assets/images/produits/Douceur du matin.jpg" alt="Douceur du matin" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Douceur du matin</h3>
@@ -479,7 +507,7 @@
           data-desc="Quand les fleurs murmurent les plus beaux sentiments. Roses & fleurs de saison."
           data-prix="45 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Chant romantique.jpg" alt="Chant romantique" />
+            <img loading="lazy" src="../assets/images/produits/Chant romantique.jpg" alt="Chant romantique" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Chant romantique</h3>
@@ -495,7 +523,7 @@
           data-desc="Bouquet de saison"
           data-prix="45 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/bouquet saison1.jpg" alt="Bouquet de saison" />
+            <img loading="lazy" src="../assets/images/produits/bouquet saison1.jpg" alt="Bouquet de saison" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Bouquet de saison</h3>
@@ -511,7 +539,7 @@
           data-desc="bouquet saison 4"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/bouquet saison 4.JPG" alt="bouquet saison 4" />
+            <img loading="lazy" src="../assets/images/produits/bouquet saison 4.JPG" alt="bouquet saison 4" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">bouquet saison 4</h3>
@@ -527,7 +555,7 @@
           data-desc="bouquet saison 5"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/bouquet saison 5.jpg" alt="bouquet saison 5" />
+            <img loading="lazy" src="../assets/images/produits/bouquet saison 5.jpg" alt="bouquet saison 5" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">bouquet saison 5</h3>
@@ -543,7 +571,7 @@
           data-desc="bouquet saison 6"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/bouquet saison 6.JPG" alt="bouquet saison 6" />
+            <img loading="lazy" src="../assets/images/produits/bouquet saison 6.JPG" alt="bouquet saison 6" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">bouquet saison 6</h3>
@@ -564,7 +592,7 @@
     <div class="container">
       <div class="rubrique__header">
         <h2>Créations personnalisées</h2>
-        <p class="rubrique__desc">Des compositions uniques réalisées selon vos envies, votre budget ou l'occasion.</p>
+        <p class="rubrique__desc">Des compositions imaginées selon vos envies.</p>
       </div>
 
       <div class="produits__grid">
@@ -576,7 +604,7 @@
           data-desc="Une composition qui attire le regard et réveille l'émotion. Fleurs variées & textures naturelles."
           data-prix="55 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Éclat poétique.JPG" alt="Éclat poétique" />
+            <img loading="lazy" src="../assets/images/produits/Éclat poétique.JPG" alt="Éclat poétique" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Éclat poétique</h3>
@@ -592,7 +620,7 @@
           data-desc="Une création unique, pensée comme une émotion florale. Composition artistique haut de gamme."
           data-prix="70 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Signature du Chant.jpg" alt="Signature du Chant" />
+            <img loading="lazy" src="../assets/images/produits/Signature du Chant.jpg" alt="Signature du Chant" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Signature du Chant</h3>
@@ -608,7 +636,7 @@
           data-desc="Bouquet de Pâques"
           data-prix="60 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/créa perso 2.jpg" alt="Bouquet de Pâques" />
+            <img loading="lazy" src="../assets/images/produits/créa perso 2.jpg" alt="Bouquet de Pâques" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Bouquet de Pâques</h3>
@@ -624,7 +652,7 @@
           data-desc="Bouquet séché"
           data-prix="35 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Bouquet seché 35 euros.jpg" alt="Bouquet séché" />
+            <img loading="lazy" src="../assets/images/produits/Bouquet seché 35 euros.jpg" alt="Bouquet séché" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Bouquet séché</h3>
@@ -640,7 +668,7 @@
           data-desc="Bouquet séché"
           data-prix="55 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Bouquet seché 55euros.jpg" alt="Bouquet séché" />
+            <img loading="lazy" src="../assets/images/produits/Bouquet seché 55euros.jpg" alt="Bouquet séché" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Bouquet séché</h3>
@@ -656,7 +684,7 @@
           data-desc="créa perso café"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/créa perso café1.jpg" alt="créa perso café" />
+            <img loading="lazy" src="../assets/images/produits/créa perso café1.jpg" alt="créa perso café" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">créa perso café</h3>
@@ -677,7 +705,7 @@
     <div class="container">
       <div class="rubrique__header">
         <h2>Mariages & Cérémonies</h2>
-        <p class="rubrique__desc">Bouquets, décorations florales et créations sur mesure pour les mariages, anniversaires, hommages et autres moments importants de la vie.</p>
+        <p class="rubrique__desc">Un accompagnement floral pour chaque moment de vie.</p>
       </div>
 
       <div class="produits__grid">
@@ -689,7 +717,7 @@
           data-desc="Une composition florale pensée pour accompagner vos plus beaux moments."
           data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Mariage 1.jpg" alt="Création mariage" />
+            <img loading="lazy" src="../assets/images/produits/Mariage 1.jpg" alt="Création mariage" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Création mariage</h3>
@@ -705,7 +733,7 @@
           data-desc="Des arrangements floraux pour sublimer votre lieu de réception."
           data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Mariage2.1.jpg" alt="Décoration florale" />
+            <img loading="lazy" src="../assets/images/produits/Mariage2.1.jpg" alt="Décoration florale" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Décoration florale</h3>
@@ -721,7 +749,7 @@
           data-desc="Un bouquet pensé pour accompagner l'un des plus beaux jours de votre vie."
           data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Mariage3.JPG" alt="Bouquet de mariée" />
+            <img loading="lazy" src="../assets/images/produits/Mariage3.JPG" alt="Bouquet de mariée" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Bouquet de mariée</h3>
@@ -737,7 +765,7 @@
           data-desc="mariage 4"
           data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/mariage 4.jpg" alt="mariage 4" />
+            <img loading="lazy" src="../assets/images/produits/mariage 4.jpg" alt="mariage 4" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">mariage 4</h3>
@@ -753,7 +781,7 @@
           data-desc="mariage 5"
           data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/mariage 5.JPG" alt="mariage 5" />
+            <img loading="lazy" src="../assets/images/produits/mariage 5.JPG" alt="mariage 5" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">mariage 5</h3>
@@ -769,7 +797,7 @@
           data-desc="mariage 6"
           data-prix="Tarif sur devis">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/mariage 6.JPG" alt="mariage 6" />
+            <img loading="lazy" src="../assets/images/produits/mariage 6.JPG" alt="mariage 6" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">mariage 6</h3>
@@ -783,7 +811,7 @@
       <!-- CTA contact pour devis -->
       <div style="text-align: center; margin-top: var(--spacing-xl);">
         <p style="color: var(--color-text-light); font-style: italic; margin-bottom: var(--spacing-l);">Pour un projet de mariage ou de cérémonie, contactez-nous pour un devis personnalisé.</p>
-        <a href="../index.html#contact" class="btn btn--outline">Nous contacter</a>
+        <a href="../index.html?demande=renseignement#contact" class="btn btn--outline">Nous contacter</a>
       </div>
 
     </div>
@@ -797,7 +825,7 @@
     <div class="container">
       <div class="rubrique__header">
         <h2>Mini compositions</h2>
-        <p class="rubrique__desc">Petites attentions florales, plantes et créations à offrir ou à s'offrir.</p>
+        <p class="rubrique__desc">De délicates attentions à offrir ou à s'offrir.</p>
       </div>
 
       <div class="produits__grid">
@@ -809,7 +837,7 @@
           data-desc="Une petite touche de nature à emporter partout. Plante ou mini composition, idéal cadeau ou attention."
           data-prix="À partir de 8 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Mini Jardin.jpg" alt="Mini Jardin" />
+            <img loading="lazy" src="../assets/images/produits/Mini Jardin.jpg" alt="Mini Jardin" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Mini Jardin</h3>
@@ -825,7 +853,7 @@
           data-desc="Bouquet séché"
           data-prix="À partir de 25 €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Bouquet seché 25euros.jpg" alt="Bouquet séché" />
+            <img loading="lazy" src="../assets/images/produits/Bouquet seché 25euros.jpg" alt="Bouquet séché" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Bouquet séché</h3>
@@ -841,7 +869,7 @@
           data-desc="Soliflore"
           data-prix="10 € (15 € avec contenant)">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/Soliflore 10 euros avec contenant 15.jpg" alt="Soliflore" />
+            <img loading="lazy" src="../assets/images/produits/Soliflore 10 euros avec contenant 15.jpg" alt="Soliflore" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">Soliflore</h3>
@@ -857,7 +885,7 @@
           data-desc="mini compo 4"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/mini compo 4.JPG" alt="mini compo 4" />
+            <img loading="lazy" src="../assets/images/produits/mini compo 4.JPG" alt="mini compo 4" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">mini compo 4</h3>
@@ -873,7 +901,7 @@
           data-desc="mini compo 5"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/mini compo 5.JPG" alt="mini compo 5" />
+            <img loading="lazy" src="../assets/images/produits/mini compo 5.JPG" alt="mini compo 5" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">mini compo 5</h3>
@@ -889,7 +917,7 @@
           data-desc="mini compo 6"
           data-prix="xx €">
           <div class="produit-card__image">
-            <img src="../assets/images/produits/mini compo 6.JPG" alt="mini compo 6" />
+            <img loading="lazy" src="../assets/images/produits/mini compo 6.JPG" alt="mini compo 6" />
           </div>
           <div class="produit-card__infos">
             <h3 class="produit-card__nom">mini compo 6</h3>
@@ -913,7 +941,6 @@
         <img id="lightbox-img" src="" alt="" />
       </div>
       <div class="lightbox__details">
-        <img src="../assets/images/logo/logo-dessin.svg" alt="" class="lightbox__ornement" />
         <h3 id="lightbox-nom" class="lightbox__nom"></h3>
         <p id="lightbox-desc" class="lightbox__desc"></p>
         <p id="lightbox-prix" class="lightbox__prix"></p>
@@ -923,10 +950,47 @@
   </div>
 
 
+  <!-- Informations pratiques -->
+  <section style="padding: var(--spacing-xl) 0; border-top: 1px solid var(--color-accent);">
+    <div class="container">
+      <div class="infos-pratiques__grid">
+        <div>
+          <h3>Où nous trouver</h3>
+          <p>
+            5 bis rue de Tlemcen<br />
+            75020 Paris<br />
+            Métro : Père Lachaise ou Ménilmontant
+          </p>
+          <p>
+            Tél : 06 XX XX XX XX<br />
+            Email : contact@leschantsdesfleurs.fr
+          </p>
+          <p>
+            <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener" class="instagram__link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>leschantsdesfleurs
+            </a>
+          </p>
+        </div>
+        <div>
+          <h3>Horaires</h3>
+          <p>
+            Lundi : fermé<br />
+            Mardi au samedi : 10h - 20h<br />
+            Dimanche : 10h - 13h
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <img src="../assets/images/logo/logo-blanc.svg" alt="Les Chants des Fleurs" class="footer__logo" />
-    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés</p>
+    <p>&copy; 2026 Les Chants des Fleurs - Tous droits réservés &nbsp;|&nbsp; <a href="../pages/mentions-legales.html">Mentions légales</a></p>
     <p>5 bis rue de Tlemcen, 75020 Paris &nbsp;|&nbsp; <a href="https://instagram.com/leschantsdesfleurs" target="_blank" rel="noopener">@leschantsdesfleurs</a></p>
   </footer>
 
