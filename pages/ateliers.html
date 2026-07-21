@@ -425,27 +425,27 @@
       .lightbox__inner {
         grid-template-columns: 1fr;
         max-height: 90vh;
-        overflow-y: auto;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
       }
 
       .lightbox__image-wrap {
         height: 240px;
+        flex-shrink: 0;
       }
 
       .lightbox__details {
         padding: var(--spacing-m) var(--spacing-l) var(--spacing-l);
-      }
-
-      .lightbox__inner::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 56px;
-        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.95));
-        pointer-events: none;
-        z-index: 5;
+        overflow-y: auto;
+        flex: 1;
+        background:
+          linear-gradient(white 30%, rgba(255, 255, 255, 0)),
+          linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%;
+        background-repeat: no-repeat;
+        background-color: white;
+        background-size: 100% 24px, 100% 48px;
+        background-attachment: local, local;
       }
     }
   </style>

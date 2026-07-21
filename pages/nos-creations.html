@@ -81,6 +81,7 @@
 
       .nav-rubriques {
         top: 70px;
+        border-top: 8px solid var(--color-bg);
       }
       .nav-rubriques::after {
         content: '';
@@ -995,6 +996,23 @@
   </footer>
 
   <script src="../assets/js/main.js"></script>
+  <script>
+    // Fix mobile sub-nav scroll offset
+    document.querySelectorAll('.nav-rubriques__inner a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const nav = document.querySelector('.nav');
+        const subNav = document.querySelector('.nav-rubriques');
+        const offset = (nav ? nav.offsetHeight : 0) + (subNav ? subNav.offsetHeight : 0) + 16;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+      });
+    });
+  </script>
   <script>
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lightbox-img');
